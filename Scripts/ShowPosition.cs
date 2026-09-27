@@ -1,10 +1,10 @@
 using UnityEngine;
+using TMPro;
 
 public class ShowPosition : MonoBehaviour
 {
     private Transform sphereTransform;
-    public int framesEspera = 1000;
-    private int contadorFrames = 0;
+    public TMP_Text positionText;
 
     void Start()
     {
@@ -12,12 +12,7 @@ public class ShowPosition : MonoBehaviour
     }
 
     void Update()
-    {   
-        contadorFrames++;
-        if (contadorFrames >= framesEspera)
-        {
-            Debug.Log("Posición de la esfera: " + sphereTransform.position);
-            contadorFrames = 0;
-        }
+    {
+        positionText.text = "Posición de la esfera: " + sphereTransform.position;
     }
 }

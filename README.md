@@ -41,7 +41,7 @@ Para realizar los cálculos se utilizan las operaciones proporcionadas por la cl
 
 ## Ejercicio 3 - Posición de la esfera
 
-Se implementó el script `ShowPosition.cs` para obtener la posición actual de la esfera.
+Se implementó el script `ShowPosition.cs` para obtener y mostrar en pantalla la posición actual de la esfera.
 
 Para ello se recupera una referencia a su componente `Transform` mediante:
 
@@ -57,7 +57,19 @@ transform.position
 
 que devuelve un `Vector3` con las coordenadas `(X, Y, Z)` del objeto.
 
-Para evitar saturar la consola con un mensaje en cada frame, se utiliza un contador y una variable pública que permite configurar desde el Inspector el número de frames que deben transcurrir entre cada impresión de la posición.
+Para mostrar esta información directamente en la interfaz del juego se añadió un elemento `TextMeshPro` dentro de un `Canvas`. El script mantiene una referencia pública al componente de texto:
+
+```csharp
+public TMP_Text positionText;
+```
+
+Esta referencia se asigna desde el Inspector y, en cada ejecución de `Update()`, se actualiza el contenido del texto con la posición actual de la esfera:
+
+```csharp
+positionText.text = "Posición de la esfera: " + sphereTransform.position;
+```
+
+De esta forma, cualquier cambio en la posición de la esfera se refleja inmediatamente en pantalla.
 
 ### Ejecución
 
